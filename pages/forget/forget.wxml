@@ -1,0 +1,4 @@
+<!--pages/forget/forget.wxml-->
+<view class="forget">
+  <text>哈哈，你为什么要忘记密码呢？</text>
+</view>

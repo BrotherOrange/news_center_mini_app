@@ -1,0 +1,34 @@
+<!--pages/register/register.wxml-->
+<form class="form" catchsubmit="formSubmit" catchreset="formReset">
+  <view class="header">输入姓名</view>
+  <view class="text">
+    <input name="input1" class="textInput" />
+  </view>
+  <view class="header">输入学生证号</view>
+  <view class="text">
+    <input name="input2" class="textInput" />  
+  </view>
+  <view class="selector">
+    <view class="choose-department">
+      <view class="header">选择部门</view>
+      <checkbox-group class="checkboxes">
+        <label><checkbox class="checkbox" value="通讯部"/>通讯部</label>
+        <label><checkbox class="checkbox" value="微博部"/>微博部</label>
+        <label><checkbox class="checkbox" value="技术部"/>技术部</label>
+        <label><checkbox class="checkbox" value="办公室"/>办公室</label>
+      </checkbox-group>
+    </view>
+  </view>
+  <view class="header">输入密码</view>
+  <view class="text">
+    <input name="input3" class="textInput" />  
+  </view>
+  <view class="header">确认密码</view>
+  <view class="text">
+    <input name="input4" class="textInput" />  
+  </view>
+  <view class="btn-area">
+    <button formType="submit" type="primary">提交</button>
+    <button formType="reset">重置</button>
+  </view>    
+</form>

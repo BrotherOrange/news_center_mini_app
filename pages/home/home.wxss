@@ -1,0 +1,18 @@
+/* pages/home/home.wxss */
+.notification {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10rpx;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  margin-bottom: 50rpx;
+  border: 2rpx solid gray;
+  border-radius: 35rpx;
+  padding: 30rpx;
+  font-size: medium;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.text {
+  margin-bottom: 20rpx;
+}

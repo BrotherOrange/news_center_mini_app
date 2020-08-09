@@ -1,0 +1,40 @@
+<!--pages/noti/noti.wxml-->
+<form class="form" catchsubmit="formSubmit" catchreset="formReset">
+  <view class="header">通知标题</view>
+  <view class="notice-title">
+    <input name="input1" class="textInput" />
+  </view>
+  <view class="header">通知正文</view>
+  <view class="notice-text">
+    <textarea name="input2" class="textInput" scroll-y="true" style="height: 300rpx" />  
+  </view>
+  <view class="selector">
+    <view class="set-deadline">
+      <view class="header">截止日期</view>
+      <picker name="picker1" mode="date" value="{{date}}" bindchange="bindDateChange">
+        <view class="deadline">
+          {{date}}
+        </view>
+      </picker>
+      <view class="header">截止时间</view>
+      <picker name="picker2" mode="time" value="{{time}}" bindchange="bindTimeChange">
+        <view class="deadline">
+          {{time}}
+        </view>
+      </picker>
+    </view>
+    <view class="choose-department">
+      <view class="header">选择部门</view>
+      <checkbox-group class="checkboxes">
+        <label><checkbox class="checkbox" value="通讯部"/>通讯部</label>
+        <label><checkbox class="checkbox" value="微博部"/>微博部</label>
+        <label><checkbox class="checkbox" value="技术部"/>技术部</label>
+        <label><checkbox class="checkbox" value="办公室"/>办公室</label>
+      </checkbox-group>
+    </view>
+  </view>
+  <view class="btn-area">
+    <button formType="submit" type="primary">提交</button>
+    <button formType="reset">重置</button>
+  </view>    
+</form>
