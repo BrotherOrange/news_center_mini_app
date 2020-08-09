@@ -1,13 +1,17 @@
 <!--pages/login/login.wxml-->
 <view class="login-page">
+  <image class="loginIcon" src="../../images/logo.png" mode="cover"></image>
   <text class="hust">华中大萌外院</text>
   <input class="input" type="text" placeholder="学生证号"
   bindinput="studentIdInput"/>
   <input class="input" type="text" password="true" placeholder="输入密码"
   bindinput="passwordInput"/>
-  <image bindtap="login" class="loginIcon" src="../../images/login.png" mode="cover"></image>
   <view class="forget-register">
     <text class="forget" bindtap="toForget">忘记密码</text>
-    <text class="register" bindtap="toRegister">用户注册</text>
+  </view>
+  <!--<image bindtap="login" class="loginIcon" src="../../images/login.png" mode="cover"></image>-->
+  <view class="btn-area" id="buttonContainer">
+    <button class="login-btn" type="primary" size="mini" bindtap="login">登录</button>
+    <button class="register-btn" type="default" size="mini" bindtap="toRegister">注册</button>
   </view>
 </view>
