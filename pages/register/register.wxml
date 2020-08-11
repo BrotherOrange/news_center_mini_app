@@ -11,7 +11,7 @@
   <view class="selector">
     <view class="choose-department">
       <view class="header">选择部门</view>
-      <checkbox-group class="checkboxes">
+      <checkbox-group name="checkbox" class="checkboxes">
         <label><checkbox class="checkbox" value="通讯部"/>通讯部</label>
         <label><checkbox class="checkbox" value="微博部"/>微博部</label>
         <label><checkbox class="checkbox" value="技术部"/>技术部</label>
@@ -21,11 +21,11 @@
   </view>
   <view class="header">输入密码</view>
   <view class="text">
-    <input name="input3" class="textInput" />  
+    <input name="input3" class="textInput" password="true"/>  
   </view>
   <view class="header">确认密码</view>
   <view class="text">
-    <input name="input4" class="textInput" />  
+    <input name="input4" class="textInput" password="true"/>  
   </view>
   <view class="btn-area">
     <button formType="submit" type="primary">提交</button>
