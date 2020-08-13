@@ -2,6 +2,6 @@
   "usingComponents": {},
   "backgroundTextStyle":"light",
   "navigationBarBackgroundColor": "#fff",
-  "navigationBarTitleText": "Notification",
+  "navigationBarTitleText": "消息发布",
   "navigationBarTextStyle":"black"
 }
