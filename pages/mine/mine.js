@@ -5,29 +5,34 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userList: [
-      {"ID": "U201916970", 
-      "atr": {name: "刘逸康",
-      password: "abclyk15973",
-      department: "技术部"
-      }},
-      {"ID": "U123", 
-      "atr": {name: "马云",
-      password: "123",
-      department: "技术部"
-      }}
-    ],
-    idList: [
-      "U201916970",
-      "U123"
-    ],
+    name: "",
+    studentId: "",
+    department: "",
+    position: ""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const thisPage = this
+    const db = wx.cloud.database()
+    this.setData({
+      // 读取本地缓存，同步学号信息
+      studentId: wx.getStorageSync('studentId')
+    })
+    // 从数据库中读取该学号对应的用户信息
+    db.collection('users').where({
+      _id: this.data.studentId
+    }).get({
+      success: function(res) {
+        thisPage.setData({
+          name: res.data[0].name,
+          department: res.data[0].department,
+          position: res.data[0].position
+        })
+      }
+    })
   },
 
   /**

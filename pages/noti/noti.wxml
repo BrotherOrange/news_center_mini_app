@@ -25,11 +25,11 @@
     </view>
     <view class="choose-department">
       <view class="header">选择部门</view>
-      <checkbox-group class="checkboxes">
-        <label><checkbox class="checkbox" value="通讯部"/>通讯部</label>
-        <label><checkbox class="checkbox" value="微博部"/>微博部</label>
-        <label><checkbox class="checkbox" value="技术部"/>技术部</label>
-        <label><checkbox class="checkbox" value="办公室"/>办公室</label>
+      <checkbox-group name="checkbox" class="checkboxes">
+        <label><checkbox class="checkbox" value="notices-tx"/>通讯部</label>
+        <label><checkbox class="checkbox" value="notices-wb"/>微博部</label>
+        <label><checkbox class="checkbox" value="notices-js"/>技术部</label>
+        <label><checkbox class="checkbox" value="notices-bgs"/>办公室</label>
       </checkbox-group>
     </view>
   </view>

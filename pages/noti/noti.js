@@ -6,8 +6,7 @@ Page({
    */
   data: {
     date: '2020 年 09 月 01 日',
-    time: '08 ：01',
-    chose: ''
+    time: '08 ：01'
   },
 
   bindTimeChange: function (e) {
@@ -26,6 +25,19 @@ Page({
 
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
+    const db = wx.cloud.database()
+    const form = e.detail.value
+    for (var i=0; i<form.checkbox.length; i++) {
+      // form.checkbox[i]为通知发送部门
+      db.collection(form.checkbox[i]).add({
+        data:{
+          title: form.input1,
+          content: form.input2,
+          deadlineDate: form.picker1,
+          deadlineTime: form.picker2
+        }
+      })
+    }
   },
 
   formReset: function () {
