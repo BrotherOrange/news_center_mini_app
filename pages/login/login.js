@@ -5,52 +5,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userList: [
-      {"ID": "U201916970", 
-      "atr": {name: "刘逸康",
-      password: "abclyk15973",
-      department: "技术部"
-      }},
-      {"ID": "U123", 
-      "atr": {name: "马云",
-      password: "123",
-      department: "技术部"
-      }}
-    ],
-    idList: [
-      "U201916970",
-      "U123"
-    ],
     studentIdGot: 0,
     passwordGot: 0
   },
 
   login: function(e) {
+    const db = wx.cloud.database()
     var passwordGot = this.data.passwordGot
     var studentIdGot = this.data.studentIdGot
-    var idList = this.data.idList
-    var user = false
-    var x = 1
-    while (x <= idList.length) {
-      if (studentIdGot==idList[x-1]) {
-        if (passwordGot==this.data.userList[x-1].atr.password) {
-          var user = true}
-        break}
-      else {
-        x+=1}}
-    if (!user) {
-      wx.showModal({
-        title: '错误',
-        content: '错误账号或密码',
-        showCancel: false,
-        confirmText: "确认"
-      })
-    }
-    else {
-      wx.switchTab({
-        url: '../home/home',
-      })
-    }
+    db.collection('users').where({
+      _id: studentIdGot
+    }).get({
+      // 获取该学号对应用户的秘密
+      success: function(res) {
+        const user = res.data[0]
+        if ((res.data.length==0)||(passwordGot!==user.password)) {
+          wx.showModal({
+            title: '错误',
+            content: '错误账号或密码',
+            showCancel: false,
+            confirmText: "确认"
+          })
+        }
+        else {
+          wx.switchTab({
+            url: '../home/home',
+          })
+        }
+      }
+    })
   },
 
   toForget: function(e) {
@@ -65,12 +48,16 @@ Page({
     })
   },
 
+  // 获取学生证号
   studentIdInput: function(e) {
     this.setData ({
       studentIdGot: e.detail.value
-    })
+    }),
+    // 将获取的学号信息缓存至本地
+    wx.setStorageSync('studentId', e.detail.value)
   },
 
+  // 获取密码
   passwordInput: function(e) {
     this.setData ({
       passwordGot: e.detail.value

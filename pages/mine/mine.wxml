@@ -1,9 +1,11 @@
 <!--pages/mine/mine.wxml-->
 <view class="mine">
   <view class="header">姓名</view>
-  <view class="text">{{userList[1].atr.name}}</view>
+  <view class="text">{{name}}</view>
   <view class="header">学号</view>
-  <view class="text">{{userList[1].ID}}</view>
+  <view class="text">{{studentId}}</view>
   <view class="header">部门</view>
-  <view class="text">{{userList[1].atr.department}}</view>
+  <view class="text">{{department}}</view>
+  <view class="header">职务</view>
+  <view class="text">{{position}}</view>
 </view>
