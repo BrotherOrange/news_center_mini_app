@@ -1,13 +1,14 @@
 <!--pages/home/home.wxml-->
+<view>{{test}}</view>
 <view wx:for="{{notifications}}" wx:for-item="item" wx:for-index="index" wx:key="date" class="notification">
   <view class="text">
     {{item.title}}
   </view>
-  <view class="text">
+  <!--<view class="text">
     发布日期：{{item.date}}
-  </view>
+  </view>-->
   <view class="text">
-    截止日期：{{item.deadline}}
+    截止日期：{{item.deadlineDate}} {{item.deadlineTime}}
   </view>
   <view class="text">
     {{item.content}}
