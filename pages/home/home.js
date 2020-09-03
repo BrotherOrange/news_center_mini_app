@@ -5,30 +5,39 @@ Page({
    * 页面的初始数据
    */
   data: {
-    notifications: [
-      {title: "通知1",
-      date: "8月3日",
-      deadline: "8月4日",
-      content: "Hello World!",
-      },
-      {title: "通知2",
-      date: "8月4日",
-      deadline: "8月5日",
-      content: "Hello There!",
-      },
-      {title: "通知3",
-      date: "8月1日",
-      deadline: "8月5日",
-      content: "Hello There!",
-      }
-    ]
+    studentId: "",
+    department: [],
+    notifications: [],
+    test: ""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const db = wx.cloud.database()
+    const thisPage = this
+    this.setData({
+      studentId: wx.getStorageSync('studentId')
+    })
+    db.collection('users').where({
+      _id: this.data.studentId
+    }).get({
+      success: function(res) {
+        thisPage.setData({
+          department:res.data[0].department
+        })
+      }
+    })
+    if (this.data.department[0]=="微博部") {
+      this.setData({
+        test: "yes"
+      })
+    }
+    else {
+      console.log(this.data)
+      // console.log(this.data.department)
+    }
   },
 
   /**
