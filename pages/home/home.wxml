@@ -1,16 +1,36 @@
 <!--pages/home/home.wxml-->
-<view>{{test}}</view>
-<view wx:for="{{notifications}}" wx:for-item="item" wx:for-index="index" wx:key="date" class="notification">
-  <view class="text">
-    {{item.title}}
-  </view>
-  <!--<view class="text">
-    发布日期：{{item.date}}
-  </view>-->
-  <view class="text">
-    截止日期：{{item.deadlineDate}} {{item.deadlineTime}}
-  </view>
-  <view class="text">
-    {{item.content}}
-  </view>
+<view wx:for="{{notifications}}" wx:key="date" class="notification">
+
+  <block>
+    <view class="text">
+      发布者：{{item.publisher}}
+    </view>
+    <view class="text">
+      发布日期：{{item.date}}
+    </view>
+    <view class="text">
+      截止日期：{{item.deadlineDate}}
+    </view>
+    <view class="text">
+      截止时间：{{item.deadlineTime}}
+    </view>
+    <view class="text">
+      {{item.title}}
+    </view>
+  </block>
+
+  <block>
+    <!--<view class="buttonArea" hidden="{{isShow}}">-->
+    <view class="buttonArea" hidden="{{id==item._id}}">
+      <image class="detailButton" bindtap="showDetail" data-id="{{item._id}}" src="../../images/arrow_down.png"></image>
+    </view>
+    <text class="text" wx:if="{{id==item._id}}">
+      {{item.content}}
+    </text>
+    <view class="buttonArea" wx:if="{{id==item._id}}">
+      <image class="detailButton" bindtap="hideDetail" src="../../images/arrow_up.png"></image>
+      <image class="detailButton" bindtap="deleteNoti" wx:if="{{isShow}}" data-id="{{item._id}}" src="../../images/delete.png"></image>
+    </view>
+  </block>
+
 </view>

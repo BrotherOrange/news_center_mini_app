@@ -1,4 +1,5 @@
 // pages/mine/mine.js
+var util = require('../../utils/util.js')
 Page({
 
   /**
@@ -8,7 +9,10 @@ Page({
     name: "",
     studentId: "",
     department: "",
-    position: ""
+    position: "",
+    memo: [],
+    date: "",
+    time: ""
   },
 
   /**
@@ -32,6 +36,42 @@ Page({
           position: res.data[0].position
         })
       }
+    }),
+    this.setData({
+      date: util.formatDate(new Date()),
+      time: util.formatTime(new Date())
+    })
+    this.setData({
+      studentId: wx.getStorageSync('studentId')
+    })
+    db.collection('memo').where({
+      studentId: this.data.studentId
+    }).get({
+      success: function(res) {
+        thisPage.setData({
+          memo: res.data
+        })
+      }
+    })
+  },
+
+  deleteMemo: function (e) {
+    const db = wx.cloud.database()
+    db.collection('memo').doc(e.currentTarget.dataset.id).remove()
+    this.onLoad()
+  },
+
+  bindTimeChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      time: e.detail.value
+    })
+  },
+
+  bindDateChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      date: e.detail.value
     })
   },
 
@@ -60,14 +100,14 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.onLoad()
   },
 
   /**

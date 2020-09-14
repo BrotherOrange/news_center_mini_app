@@ -1,10 +1,10 @@
 <!--pages/register/register.wxml-->
-<form class="form" catchsubmit="formSubmit" catchreset="formReset">
+<form class="form" catchsubmit="formSubmit" catchreset="formReset" wx:if="{{isHide}}">
   <view class="header">输入姓名</view>
   <view class="text">
-    <input name="input1" class="textInput" />
+    <input name="input1" class="textInput" bindblur="getName" />
   </view>
-  <view class="header">输入学生证号</view>
+  <view class="header">输入学号</view>
   <view class="text">
     <input name="input2" class="textInput" />  
   </view>
@@ -32,3 +32,9 @@
     <button formType="reset">重置</button>
   </view>    
 </form>
+
+<view class="welcome" wx:if="{{isShow}}">
+  <view>{{name}}，你好！</view>
+  <view>欢迎来到新闻中心！</view> 
+  <text text-decoration="underline" bindtap="navigateToLogin">点击登录</text>
+</view>
