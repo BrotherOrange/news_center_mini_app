@@ -6,7 +6,8 @@ Page({
    */
   data: {
     studentIdGot: 0,
-    passwordGot: 0
+    passwordGot: 0,
+    department: []
   },
 
   login: function(e) {
@@ -32,6 +33,13 @@ Page({
             url: '../home/home',
           })
         }
+      }
+    }),
+    db.collection('users').where({
+      _id: studentIdGot
+    }).get({
+      success: function(res) {
+        wx.setStorageSync('department', res.data[0].department)
       }
     })
   },

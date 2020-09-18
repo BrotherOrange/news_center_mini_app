@@ -21,3 +21,38 @@
 .text {
   margin-bottom: 20rpx;
 }
+
+.textInput {
+  padding: 20rpx;
+}
+
+.set-deadline {
+  display: flex;
+  flex-direction: column;
+}
+
+.deadline {
+  margin-bottom: 25rpx;
+}
+
+.notice-text {
+  border: 2rpx solid lightgray ;
+  border-radius: 15rpx;
+  margin-bottom: 25rpx;
+}
+
+.btn-area {
+  display: flex;
+  flex-direction: row;
+}
+
+.buttonArea {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.detailButton {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 20rpx;
+}

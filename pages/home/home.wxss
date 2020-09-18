@@ -16,3 +16,14 @@
 .text {
   margin-bottom: 20rpx;
 }
+
+.buttonArea {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.detailButton {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 20rpx;
+}

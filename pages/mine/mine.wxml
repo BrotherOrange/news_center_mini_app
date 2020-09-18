@@ -9,3 +9,17 @@
   <view class="header">职务</view>
   <view class="text">{{position}}</view>
 </view>
+<view wx:for="{{memo}}" wx:key="_id" class="mine">
+  <view class="text">
+    截止日期：{{item.deadlineDate}}
+  </view>
+  <view class="text">
+    截止时间：{{item.deadlineTime}}
+  </view>
+  <view class="text">
+    {{item.content}}
+  </view>
+  <view class="buttonArea">
+    <image class="detailButton" bindtap="deleteMemo" data-id="{{item._id}}" src="../../images/delete.png"></image>
+  </view>
+</view>

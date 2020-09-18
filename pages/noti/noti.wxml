@@ -1,5 +1,5 @@
 <!--pages/noti/noti.wxml-->
-<form class="form" catchsubmit="formSubmit" catchreset="formReset">
+<form class="form" catchsubmit="formSubmitNoti" catchreset="formResetNoti" wx:if="{{isShow}}">
   <view class="header">通知标题</view>
   <view class="notice-title">
     <input name="input1" class="textInput" />
@@ -36,5 +36,32 @@
   <view class="btn-area">
     <button formType="submit" type="primary">提交</button>
     <button formType="reset">重置</button>
-  </view>    
+  </view>
+</form>
+
+<form class="form" catchsubmit="formSubmitMemo" catchreset="formResetMemo">
+  <view class="header">备忘录内容</view>
+  <view class="notice-text">
+    <textarea name="input" class="textInput" scroll-y="true" style="height: 300rpx" />  
+  </view>
+  <view class="selector">
+    <view class="set-deadline">
+      <view class="header">截止日期</view>
+      <picker name="picker1" mode="date" value="{{date}}" bindchange="bindDateChange">
+        <view class="deadline">
+          {{date}}
+        </view>
+      </picker>
+      <view class="header">截止时间</view>
+      <picker name="picker2" mode="time" value="{{time}}" bindchange="bindTimeChange">
+        <view class="deadline">
+          {{time}}
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view class="btn-area">
+    <button formType="submit" type="primary">提交</button>
+    <button formType="reset">重置</button>
+  </view>
 </form>
